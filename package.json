@@ -2,11 +2,13 @@
   "name": "motorcycle-service-db",
   "version": "0.1.0",
   "description": "A simple collection of motorcycle service schedules in JSON format.",
-  "main": "gruntfile.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "grunt",
-    "deploy": "grunt && gh-pages -d dist"
+    "build": "node scripts/build.mjs",
+    "deploy": "npm run build && gh-pages -d dist",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "format": "biome format --write ."
   },
   "author": "Sébastien Côté",
   "license": "(MIT OR CC-BY-SA-4.0)",
@@ -23,10 +25,10 @@
     "motorcycle"
   ],
   "devDependencies": {
-    "del": "^5.1.0",
+    "@biomejs/biome": "^2.3.11",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
     "gh-pages": "^3.1.0",
-    "grunt": "^1.2.0",
-    "grunt-contrib-clean": "^2.0.0",
-    "grunt-jsonlint": "^2.1.2"
+    "glob": "^11.0.0"
   }
 }
